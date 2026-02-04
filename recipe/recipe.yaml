@@ -1,5 +1,5 @@
 context:
-  version: "2.12.0"
+  version: "2.12.1"
   touch_is_freethreading: ${{ is_freethreading }}
   build_num: 0
   mlevel: ${{ (microarch_level | int) if microarch_level else 0 }}
@@ -11,9 +11,7 @@ package:
 
 source:
   url: https://github.com/pyscf/pyscf/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: d2a924314433b17ea033fd7d311d94f109d5b2ba8a0d70a37312aca4a44350e5
-  patches:
-    - 0001-smearing_optimize-make-sure-mu-is-a-scalar-numpy-2.4.patch
+  sha256: 4c07315f3ca64e368f2228f22c3eb7d603e1317c2c4d73fc6637bb023f849933
 
 build:
   number: ${{ ( (build_num | int) + 100 * (mlevel | int) + (1000 if use_fast_math else 0) ) }}
